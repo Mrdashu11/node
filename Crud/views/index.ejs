@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #eef2f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #444;
+}
+
+.container {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 750px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+form input[type="text"],
+form input[type="file"] {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus, 
+form input[type="file"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+form input[type="submit"] {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td img {
+    width: 400px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    background-color: #f44336;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e53935;
+}
+
+a {
+    text-decoration: none;
+}
+
+.edit-button {
+    background-color: #2196F3;
+}
+
+.edit-button:hover {
+    background-color: #1976D2;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crud app</h1>
+        <form action="/insert" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Enter name">
+            <input type="text" name="subject" placeholder="Enter subject">
+            <input type="file" name="image">
+            <input type="submit" value="Add">
+        </form>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+
+            <% data.map((el,i)=>{  %>
+                <tr>
+                    <td><%=el.name%></td>
+                    <td><%=el.subject%></td>
+                    <td><img src="<%=el.image%>"  alt=""></td>
+                    <td>
+                        <a href="/deleteData?id=<%=el.id%>"><button>Delete</button></a>
+                        <a href="/editData?id=<%=el.id%>"><button class="edit-button">Edit</button></a>
+                    </td>
+                </tr>
+            <% })%>
+        </table>
+    </div>
+</body>
+</html>
