@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="file"],
+input[type="text"],
+input[type="number"],
+input[type="submit"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+input[type="file"] {
+    font-size: 0.9em;
+}
+
+input[type="submit"] {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff2c2c;
+}
+
+input::placeholder {
+    color: #999;
+    font-size: 16px;
+}
+
+
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Movie App</h1>
+    <form action="/insert" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="text" name="name" placeholder="enter movie name">
+        <input type="text" name="movietype" placeholder="Enter movie type">
+        <input type="number" name="rating" placeholder="Enter rating" >
+        
+        <input type="submit">
+    </form>
+    
+</body>
+</html>

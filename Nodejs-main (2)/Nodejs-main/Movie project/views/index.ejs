@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie app</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-evenly;
+}
+
+.logo img {
+    height: 60px;
+    width: 80px;
+}
+
+.search-bar input {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.location {
+    font-size: 16px;
+    color: #333;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.location .arrow-down {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+.sign-in button {
+    background-color: #ff4e61;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sign-in button:hover {
+    background-color: #e84150;
+}
+
+.menu-icon .hamburger {
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+    position: relative;
+}
+
+.menu-icon .hamburger:before, 
+.menu-icon .hamburger:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+    left: 0;
+}
+
+.menu-icon .hamburger:before {
+    top: -7px;
+}
+
+.menu-icon .hamburger:after {
+    top: 7px;
+}
+
+.sub-menu {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sub-menu a {
+    margin: 0 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sub-menu a:hover {
+    color: #ff4e61;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.movie-card {
+    width: 350px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.poster {
+    width: 100%;
+    height: 60%;
+}
+
+.rating {
+    background-color: #222;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.rating .star {
+    color: red;
+    font-size: 20px;
+}
+
+.rating-score {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+
+.title {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #333;
+    padding: 0 10px;
+}
+
+.genre {
+    color: #777;
+    font-size: 0.9em;
+    padding-bottom: 10px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.card-button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border: none;
+    background-color: #ff5c5c;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background-color: #ff2c2c;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="#"><img src="https://play-lh.googleusercontent.com/io93B-IVuOR2eJv0nNvOed9CItLsAF9pnf9TzgfV8xpQ9w18QUE8GgLScGML4ezB7A" alt="BookMyShow Logo"></a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+            </div>
+            <div class="location">
+                <span>Rajkot</span> <i class="arrow-down"></i>
+            </div>
+            <div class="sign-in">
+                <a href="/form"><button>Add data</button>
+                </a>
+            </div>
+            <div class="menu-icon">
+                <i class="hamburger"></i>
+            </div>
+        </div>
+        <nav class="sub-menu">
+            <a href="#">Movies</a>
+            <a href="#">Stream</a>
+            <a href="#">Events</a>
+            <a href="#">Plays</a>
+            <a href="#">Sports</a>
+            <a href="#">Activities</a>
+            <a href="#">ListYourShow</a>
+            <a href="#">Corporates</a>
+            <a href="#">Offers</a>
+            <a href="#">Gift Cards</a>
+        </nav>
+        <div class="card-container">
+            <% data.map((el, i) => { %>
+            <div class="movie-card">
+                <img src="<%= el.image %>" alt="<%= el.name %>" class="poster">
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="rating-score"><%= el.rating %>/10</span>
+                    
+                </div>
+                <h3 class="title"><%= el.name %></h3>
+                <div class="genre"><%= el.movietype %></div>
+                <div class="card-actions">
+                    <a href="/deletemovie?id=<%= el.id %>"><button class="card-button">Delete</button></a>
+                    <a href="/editdmovie?id=<%= el.id %>"><button class="card-button">Edit</button></a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        
+    </header>
+</body>
+</html>
