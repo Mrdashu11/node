@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4">
+        <!-- Header -->
+        <header class="bg-white shadow-md mb-6" style="height: 80px;">
+            <div class="container mx-auto flex items-center justify-between h-full px-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="mr-6">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCQRljVyfj3UiMHupL1q-KarIA2U3vncvyxw&s" alt="Logo" class="h-14"> <!-- Slightly larger logo -->
+                    </div>
+        
+                    <!-- Search Bar -->
+                    <div class="relative w-72 md:w-96">
+                        <input 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700" 
+                            type="text" 
+                            placeholder="Search for Movies, Events, Plays, Sports and Activities">
+                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21.71 20.29l-3.39-3.39a9 9 0 1 0-1.42 1.42l3.39 3.39a1 1 0 0 0 1.42-1.42zM10 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                        </svg>
+                    </div>
+                </div>
+        
+                <!-- Location, Sign-in, and Menu -->
+                <div class="flex items-center space-x-6">
+                    <!-- Location -->
+                    <div class="flex items-center text-gray-700 cursor-pointer hover:text-blue-500">
+                        Addanki
+                        <svg class="w-4 h-4 ml-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+        
+                    <!-- Sign-in Button -->
+                    <button class="bg-red-500 text-white px-4 py-2 rounded-full shadow hover:bg-red-600 transition duration-300 ease-in-out">
+                        Sign in
+                    </button>
+        
+                    <!-- Menu Icon -->
+                    <svg class="w-8 h-8 text-gray-700 cursor-pointer hover:text-blue-500 transition duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+        </header>
+        
+        
+
+        <!-- Add Movie Button -->
+        <a href="/add" class="mb-4 inline-block px-8 py-2 bg-green-500 text-white rounded-lg">Add Movie</a>
+        
+        <!-- Movie Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <% data.map((el)=>{ %>
+            <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
+                <!-- Movie Poster -->
+                <img class="w-full h-64 object-cover" src="<%= el.poster %>" alt="Movie Poster">
+                
+                <div class="px-4 py-2">
+                    <!-- Movie Title -->
+                    <div class="font-bold text-xl mb-1"><%= el.title %></div>
+                    
+                    <!-- Movie Category and Rating -->
+                    <div class="flex justify-between items-center text-sm text-gray-500">
+                        <p><%= el.category %></p>
+                        <p class="flex items-center">
+                            Rating: <span class="ml-1 text-yellow-500 font-bold"><%= el.rating %></span>
+                        </p>
+                    </div>
+                    
+                    <!-- Edit and Delete Buttons -->
+                    <div class="flex justify-between mt-4">
+                        
+                            <button class="bg-blue-500 text-white text-sm py-1 px-3 rounded hover:bg-blue-600">
+                                <a href="/edit/<%= el._id %>">Edit</a>
+                            </button>
+                        
+                        <button class="bg-red-500 text-white text-sm py-1 px-3 rounded hover:bg-red-600">
+                            <a href="/delete/<%= el._id %>">Delete</a>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
