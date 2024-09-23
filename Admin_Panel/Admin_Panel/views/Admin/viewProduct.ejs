@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+        <%- include("header") %>
+        <%- include("aside") %> 
+        <div class="page-wrapper" style="margin-left: 250px;">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+           
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title m-b-0">Product Table</h5>
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Images</th>
+                                        <th scope="col">Categories</th>
+                                        <th scope="col">Stock</th>
+                                        <th scope="col">Reviews</th>
+                                        <th scope="col">Estimated Delivery</th>
+                                        <th scope="col">Free Shipping</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% products.forEach((product, index) => { %>
+                                    <tr>
+                                        <td><%= index + 1 %></td>
+                                        <td><%= product.name %></td>
+                                        <td>
+                                            <% 
+                                              const description = product.description || ''; // Default to empty string if undefined
+                                              const truncatedDescription = description.length > 50 ? description.substring(0, 50) + '...' : description;
+                                            %>
+                                            <%= truncatedDescription %>
+                                        </td>
+                                        <td>$<%= product.price.toFixed(2) %></td>
+                                        <td>
+                                            <% if (product.images && product.images.length > 0) { %>
+                                                <% product.images.forEach(image => { %>
+                                                    <img src="/uploads/<%= image.url %>" alt="<%= product.name %>" style="height: 100px; width: 100px; object-fit: contain;">
+                                                <% }) %>
+                                            <% } else { %>
+                                                <p>No Images</p>
+                                            <% } %>
+                                        </td>
+                                        <td><%= product.categories.join(', ') %></td>
+                                        <td><%= product.stock %></td>
+                                        <td><%= product.reviews %></td>
+                                        <td><%= product.estimatedDelivery %></td>
+                                        <td><%= product.freeShipping ? 'Yes' : 'No' %></td>
+                                        <td>
+                                            <a href="/products/<%= product._id %>" class="btn btn-info btn-sm">View</a>
+                                            <a href="/products/<%= product._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/products/<%= product._id %>" method="POST" style="display: inline;">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                            
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a
+                    href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+        </div>
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+        <script src="../assets/js/sidebarmenu.js"></script>
+        <script src="../assets/js/app.min.js"></script>
+        <script src="../assets/js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+      </body>
+      
+      </html>            

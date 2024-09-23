@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+        <%- include("header") %>
+        <%- include("aside") %> 
+        <div class="page-wrapper" style="margin-left: 250px;">
+          <!-- ============================================================== -->
+                           <!-- Bread crumb and right sidebar toggle -->
+                           <!-- ============================================================== -->
+                         
+        
+                           <div class="container-fluid">
+        
+                               <div class="row">
+                                   <div class="col-12">
+                                       <div class="card">
+                                           <div class="card-body">
+                                               <h5 class="card-title m-b-0">User Table</h5>
+                                           </div>
+                                           <table class="table">
+                                               <thead>
+                                                   <tr>
+                                                       <th scope="col">#</th>
+                                                       <th scope="col">First Name</th>
+                                                       <th scope="col">Last Name</th>
+                                                       <th scope="col">Email</th>
+                                                       <th scope="col">Password</th>
+                                                       <th scope="col">Comapany</th>
+                                                       <th scope="col">Mobail</th>
+                                                       <th scope="col">Message</th>
+                                                   </tr>
+                                               </thead>
+                                               <tbody>
+                                                   <% data.map((e,i)=>{%>
+                                                       <tr>
+                                                           <td>
+                                                               <%= i+1 %>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.fname%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.lname%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.email%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.password%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.company%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.mobail%>
+                                                           </td>
+                                                           <td>
+                                                               <%=e.message%>
+                                                           </td>
+                                                       </tr>
+                                                       <% }) %>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>
+                               </div>
+        
+                           </div>
+        
+                           <footer class="footer text-center">
+                               All Rights Reserved by Matrix-admin. Designed and Developed by <a
+                                   href="https://wrappixel.com">WrapPixel</a>.
+                           </footer>
+                       </div>
+        
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+        <script src="../assets/js/sidebarmenu.js"></script>
+        <script src="../assets/js/app.min.js"></script>
+        <script src="../assets/js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+      </body>
+      
+      </html>            
